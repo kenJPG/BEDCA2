@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="/css/checkout.css" />
+
+	<script src="/js/tokenAuthCustomer.js"></script>
+	
+	<title>Checkout</title>
+</head>
+<body>
+	<div id="alert_container">
+	</div>
+	<div id="newCard">
+		<div class="modal" tabindex="-1" id="add_card_modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<form id="add_card_form">
+						<div class="modal-header">
+							<h5 class="modal-title">Add a new Card</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div id="new_card_body" class="modal-body">
+							<div class="flex-nowrap mb-3">
+								<label for="add_card_number" class="form-label">Card Number</label>
+								<input id="add_card_number" type="text" class="form-control" name="card_number" placeholder="Card number" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="add_card_name" class="form-label">Name on Card</label>
+								<input id="add_card_name" type="text" class="form-control" name="card_name" placeholder="Name" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="add_card_cvv" class="form-label">CVV</label>
+								<input id="add_card_cvv" type="text" class="form-control" name="cvv" placeholder="CVV" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="add_card_expiration" class="form-label">Card Expiration</label>
+								<input id="add_card_expiration" type="text" class="form-control" name="card_expiration" placeholder="YYYY/MM" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="submit_add_card_form_button" type="button" class="btn btn-primary">Add payment</button></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="editCard">
+		<div class="modal" tabindex="-1" id="edit_card_modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<form id="edit_card_form">
+						<div class="modal-header">
+							<h5 class="modal-title">Edit Card</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div id="new_card_body" class="modal-body">
+							<div class="flex-nowrap mb-3">
+								<label for="edit_card_number" class="form-label">Card Number</label>
+								<input id="edit_card_number" type="text" class="form-control" name="card_number" placeholder="Card number" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="edit_card_name" class="form-label">Name on Card</label>
+								<input id="edit_card_name" type="text" class="form-control" name="card_name" placeholder="Name" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="edit_card_cvv" class="form-label">CVV</label>
+								<input id="edit_card_cvv" type="text" class="form-control" name="cvv" placeholder="CVV" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="edit_card_expiration" class="form-label">Card Expiration</label>
+								<input id="edit_card_expiration" type="text" class="form-control" name="card_expiration" placeholder="YYYY/MM" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="submit_edit_card_form_button" type="button" class="btn btn-primary">Save changes</button></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="addAddress">
+		<div class="modal" tabindex="-1" id="add_address_modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<form id="add_address_form">
+						<div class="modal-header">
+							<h5 class="modal-title">Add a new address</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div id="add_address_body" class="modal-body">
+							<div class="flex-nowrap mb-3">
+								<label for="add_address_name" class="form-label">Receiver Name</label>
+								<input id="add_address_name" type="text" class="form-control" name="address_name" placeholder="Name" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="add_address_address" class="form-label">Address</label>
+								<input id="add_address_address" type="text" class="form-control" name="address" placeholder="Address details" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="add_address_postal" class="form-label">Postal Code</label>
+								<input id="add_address_postal" type="text" class="form-control" name="postal_code" placeholder="XXXXXX" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="submit_add_address_form_button" type="button" class="btn btn-primary">Add address</button></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="editAddress">
+		<div class="modal" tabindex="-1" id="edit_address_modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<form id="edit_address_form">
+						<div class="modal-header">
+							<h5 class="modal-title">Add a new address</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div id="edit_address_body" class="modal-body">
+							<div class="flex-nowrap mb-3">
+								<label for="edit_address_name" class="form-label">Receiver Name</label>
+								<input id="edit_address_name" type="text" class="form-control" name="address_name" placeholder="Name" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="edit_address_address" class="form-label">Address</label>
+								<input id="edit_address_address" type="text" class="form-control" name="address" placeholder="Address details" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+							<div class="flex-nowrap mb-3">
+								<label for="edit_address_postal" class="form-label">Postal Code</label>
+								<input id="edit_address_postal" type="text" class="form-control" name="postal_code" placeholder="XXXXXX" aria-label="name" aria-describedby="addon-wrapping">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="submit_edit_address_form_button" type="button" class="btn btn-primary">Save changes</button></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<body class="bg-light" cz-shortcut-listen="true">
+		
+	<div class="container pb-5 mb-5" style="max-width: 50vw;">
+		<main>
+			<div class="py-5 text-center">
+				<h2>Checkout</h2>
+				<p class="lead">Please contact support if you have any concerns.</p>
+				<a class="text-decoration-none" href="/"><i class="fas fa-caret-left" style="margin-right: 1%"></i><span class="lead">Return to home</span></a>
+			</div>
+			
+			<div class="row g-5">
+			<div class="col-md-5 col-lg-4 order-md-last">
+				<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-primary">Your cart</span>
+				</h4>
+				<ul class="list-group mb-3">
+					<div id="cart_items">
+					</div>
+					<li class="list-group-item d-flex justify-content-between">
+						<span>Total (USD)</span>
+						<strong id="checkout_total">$20</strong>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-7 col-lg-8">
+				<h4 class="mb-3">Shipping address</h4>
+
+				<div id="address_container" class="d-flex flex-wrap">
+				</div>
+
+				<button id="add_address_button" class="btn btn-primary">
+					Add new address
+				</button>
+
+				<button id="edit_address_button" class="btn btn-success d-none">
+					Edit address
+				</button>
+
+				<button id="delete_address_button" class="btn btn-danger d-none">
+					Delete address
+				</button>
+
+				<hr class="my-4">
+
+				<h4 class="mb-3">Payment</h4>
+
+				<div id="payment_container" class="d-flex flex-wrap">
+				</div>
+
+				<button id="add_new_card_button" class="btn btn-primary">
+					Add new card
+				</button>
+
+				<button id="edit_card_button" class="btn btn-success d-none">
+					Edit card
+				</button>
+
+				<button id="delete_card_button" class="btn btn-danger d-none">
+					Delete card
+				</button>
+
+				<hr class="my-4">
+
+				<button id="checkout_button" class="w-100 btn btn-primary btn-lg" type="button">Checkout</button>
+				</form>
+			</div>
+			</div>
+		</main>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="/js/tokenValid.js"></script>
+	<script src="/js/alert.js"></script>
+	<script src="/js/payment.js"></script>
+	<script src="/js/address.js"></script>
+	<script src="/js/checkout_cart.js"></script>
+	<script src="/js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+1. All npm modules have already been installed
+
+2. Run sql_start.sql to initialize the sql database
+
+3. Run the servers:
+
+	Backend Server:
+	Open a terminal with the current directory at ./backend
+	Type >npm start
+
+	Frontend Server:
+	Open a terminal with the current directory at ./backend
+	Type >npm start
+
+
+4. Backend server is hosted on port: 8081
+   Frontend server is hosted on port: 3001
+
+   PORT and JWT_SECRET are stored in .env files

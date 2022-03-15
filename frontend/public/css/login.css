@@ -1,0 +1,40 @@
+.main_container {
+	height: 100vh;
+	width: 100vw;
+}
+
+.login_container {
+	height: 100vh;
+	width: 100vw;
+}
+
+.loginMessageContainer {
+	min-height: 8vh;
+}
+
+#login_button {
+	background: white;
+}
+
+#login_container {
+	background: linear-gradient(to right, #333 0%, #333 7%, #FBFBFB 7%, #FBFBFB 100%);
+}
+
+body {
+    animation: fadeInAnimation cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+#loginMessage {
+	color: crimson;
+}
